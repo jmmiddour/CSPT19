@@ -1,35 +1,39 @@
 """
-You are given two integers, n and k. Consider the string representation of n, and find the number of distinct substrings of length k, such that n is divisible by the number formed by that substring. In other words, how many different numbers formed by k consecutive digits of n are factors of n?
+You are given two integers, `n` and `k`.
+Consider the string representation of `n`, and find the number of distinct
+	substrings of length `k`, such that `n` is divisible by the number formed
+	by that substring.
+In other words, how many different numbers formed by `k` consecutive digits
+	of `n` are factors of `n`?
 
 Note: The k-digit substrings may have leading zeros.
 
-Example
+Example:
 
-For n = 120 and k = 2, the output should be divisorSubstrings(n, k) = 2.
+For `n = 120` and `k = 2`, the output should be divisorSubstrings(n, k) = 2.
 
-The divisor substrings are 12 and 20 (120 is divisible by both of these).
+	The divisor substrings are 12 and 20 (120 is divisible by both of these).
 
-For n = 555 and k = 1, the output should be divisorSubstrings(n, k) = 1.
+For `n = 555` and `k = 1`, the output should be divisorSubstrings(n, k) = 1.
 
-All the substrings of length 1 are equal to 5 which is a divisor of 555. The answer is not 3 since we're only counting distinct numbers.
+	All the substrings of length 1 are equal to 5 which is a divisor of 555.
+	The answer is not 3 since we're only counting distinct numbers.
 
-For n = 5341 and k = 2, the output should be divisorSubstrings(n, k) = 0.
+For `n = 5341` and `k = 2`, the output should be divisorSubstrings(n, k) = 0.
 
-5341 is not divisible by 53, 34 nor 41, so the answer is 0.
+	5341 is not divisible by 53, 34 nor 41, so the answer is 0.
 
-Input/Output
+Input/Output:
 
 [execution time limit] 4 seconds (py3)
 
 [input] integer n
-
 An integer representing the number we're trying to find the substring factors of.
 
 Guaranteed constraints:
 1 ≤ n ≤ 109.
 
 [input] integer k
-
 An integer representing how many digits long the substrings should be.
 
 Guaranteed constraints:
@@ -37,7 +41,6 @@ Guaranteed constraints:
 10k - 1 ≤ n.
 
 [output] integer
-
 The number of distinct substrings of length k which are factors of n.
 """
 
@@ -74,17 +77,17 @@ Plan:
 
 
 def divisorSubstrings(n, k):
-	if n == None:
-		return 0
+	if n == None:  # Check if `n` is empty
+		return 0  # Return 0 if empty
 
-	n_str = str(n)
-	counter = 0
+	n_str = str(n)  # Convert `n` to a string
+	counter = 0  # Create a `counter` variable
 
-	for i in range(len(n_str)):
-		for j in range(i + k):
-			print(n_str[j])
-			num = n_str[i: j]
-			if n % int(num) == 0:
-				counter += 1
+	for i in range(len(n_str)):  # Iterate through the index
+		for j in range(i + k):  # Iterate through again with the ending index
+			print(n_str[j])  # Check to see what each `j` index prints
+			num = n_str[i: j]  # Create the sliding window
+			if n % int(num) == 0:  # If no remainder
+				counter += 1  # Increase the counter variable
 
-	return counter
+	return counter  # Return the counter value
