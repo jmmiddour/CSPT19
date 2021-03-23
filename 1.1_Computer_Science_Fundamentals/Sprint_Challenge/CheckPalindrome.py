@@ -44,12 +44,12 @@ Plan:
 
 # Final code that passed all test, both visible and hidden.
 def csCheckPalindrome(input_str):
-	# rev_list = [input_str[x] for x in range(len(input_str))]
-	#
-	# if ''.join(rev_list[::-1]) == input_str:
-	# 	return True
-	#
-	# return False
+	rev_list = [input_str[x] for x in range(len(input_str))]
+
+	if ''.join(rev_list[::-1]) == input_str:
+		return True
+
+	return False
 
 	# ### Much simpler code if I did not need to use the `for` loop ### #
 	# return input_str[::-1] == input_str  # Still O(n) time and space
