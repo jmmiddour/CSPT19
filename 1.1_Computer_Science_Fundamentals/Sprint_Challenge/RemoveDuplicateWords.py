@@ -1,10 +1,17 @@
 """
-Given a string, write a function that removes all duplicate words from the input. The string that you return should only contain the first occurrence of each word in the string.
+Given a string, write a function that removes all duplicate words from the
+	input. The string that you return should only contain the first occurrence
+	of each word in the string.
 
 Examples:
 
-`csRemoveDuplicateWords("alpha bravo bravo golf golf golf delta alpha bravo bravo golf golf golf delta") -> "alpha bravo golf delta"
-`csRemoveDuplicateWords("my dog is my dog is super smart") -> "my dog is super smart"
+`csRemoveDuplicateWords("alpha bravo bravo golf golf golf delta alpha bravo
+	bravo golf golf golf delta")` -> `"alpha bravo golf delta"`
+`csRemoveDuplicateWords("my dog is my dog is super smart")`
+	-> `"my dog is super smart"`
+
+Input/Output:
+
 [execution time limit] 4 seconds (py3)
 
 [input] string input_str
@@ -16,7 +23,7 @@ Examples:
 Plan:
 Return the input string with only unique values (words).
 
-Tried to use set but that did not return the first instance of a word. It 
+Tried to use `set` but that did not return the first instance of a word. It 
 returned all the unique values but not in the correct order.
 """
 
