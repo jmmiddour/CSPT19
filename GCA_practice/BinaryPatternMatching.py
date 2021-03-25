@@ -84,7 +84,7 @@ def binaryPatternMatching(pattern, s):
 
 	for x in range(len(s)):
 		if s[x] in vowels:
-			bool_str.append(0)
+			(bool_str.append(0))
 		else:
 			bool_str.append(1)
 
@@ -92,9 +92,7 @@ def binaryPatternMatching(pattern, s):
 	print(f'Pattern: {pattern}')
 
 	for i in range(len(bool_str)):
-		pat_len = len(pattern)
-		temp_str = [str(x) for x in bool_str[i:i + pat_len]]
-		temp_str = ''.join(temp_str)
+		temp_str = ''.join([str(x) for x in bool_str[i:i + len(pattern)]])
 		if temp_str == pattern:
 			counter += 1
 			print(f'Temp String {i}: {str(temp_str)}, Counter: {counter}')
