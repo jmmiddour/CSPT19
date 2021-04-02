@@ -60,27 +60,28 @@ def isZigzag(numbers):
 	return res
 
 
-Test:
-numbers: [1, 2, 1, 3, 4]
-Expected Output: [1, 1, 0]
+# Testing:
+if __name__ == '__main__':
+	print(f'Test 1 Output: {isZigzag([1, 2, 1, 3, 4])}')
+	print(f'Test 1 Expected Output: [1, 1, 0]\n')
 
-numbers: [1, 2, 3, 4]
-Expected Output: [0, 0]
+	print(f'Test 2 Output: {isZigzag([1, 2, 3, 4])}')
+	print(f'Test 2 Expected Output: [0, 0]\n')
 
-numbers: [1000000000, 1000000000, 1000000000]
-Expected Output: [0]
+	print(f'Test 3 Output: {isZigzag([1000000000, 1000000000, 1000000000])}')
+	print(f'Test 3 Expected Output: [0]\n')
 
-numbers: [1, 2, 4, 3, 1]
-Expected Output: [0, 1, 0]
+	print(f'Test 4 Output: {isZigzag([1, 2, 4, 3, 1])}')
+	print(f'Test 4 Expected Output: [0, 1, 0]\n')
 
-numbers: [3, 5, 2, 6, 10]
-Expected Output: [1, 1, 0]
+	print(f'Test 5 Output: {isZigzag([3, 5, 2, 6, 10])}')
+	print(f'Test 5 Expected Output: [1, 1, 0]\n')
 
-numbers: [1, 3, 4, 5, 6, 14, 14]
-Expected Output: [0, 0, 0, 0, 0]
+	print(f'Test 6 Output: {isZigzag([1, 3, 4, 5, 6, 14, 14])}')
+	print(f'Test 6 Expected Output: [0, 0, 0, 0, 0]\n')
 
-numbers: [1, 5, 7, 3, 10, 2, 4, 9, 8, 6]
-Expected Output: [0, 1, 1, 1, 1, 0, 1, 0]
+	print(f'Test 7 Output: {isZigzag([1, 5, 7, 3, 10, 2, 4, 9, 8, 6])}')
+	print(f'Test 7 Expected Output: [0, 1, 1, 1, 1, 0, 1, 0]\n')
 
-numbers: [11, 14, 3, 17, 16, 13, 3, 7, 19, 8]
-Expected Output: [1, 1, 1, 0, 0, 1, 0, 1]
+	print(f'Test 8 Output: {isZigzag([11, 14, 3, 17, 16, 13, 3, 7, 19, 8])}')
+	print(f'Test 8 Expected Output: [1, 1, 1, 0, 0, 1, 0, 1]\n')
