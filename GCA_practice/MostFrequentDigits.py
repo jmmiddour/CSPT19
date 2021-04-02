@@ -66,38 +66,88 @@ def mostFrequentDigits(a):
 	return sorted(results)
 
 
-Test:
-a: [25, 2, 3, 57, 38, 41]
-Expected Output: [2, 3, 5]
+# Testing:
+if __name__ == '__main__':
+	corr1 = [2, 3, 5]
+	if mostFrequentDigits([25, 2, 3, 57, 38, 41]) == corr1:
+		print('Correct!')
+	else:
+		print(f'Wrong! Expected Output: {corr1}\n'
+		      f'Your Output: {mostFrequentDigits([25, 2, 3, 57, 38, 41])}')
 
-a: [4, 5, 4, 2, 2, 25]
-Expected Output: [2]
+	corr2 = [2]
+	if mostFrequentDigits([4, 5, 4, 2, 2, 25]) == corr2:
+		print('Correct!')
+	else:
+		print(f'Wrong! Expected Output: {corr2}\n'
+		      f'Your Output: {mostFrequentDigits([4, 5, 4, 2, 2, 25])}')
 
-a: [1, 10, 20, 10, 30]
-Expected Output: [0]
+	corr3 = [0]
+	if mostFrequentDigits([1, 10, 20, 10, 30]) == corr3:
+		print('Correct!')
+	else:
+		print(f'Wrong! Expected Output: {corr3}\n'
+		      f'Your Output: {mostFrequentDigits([1, 10, 20, 10, 30])}')
 
-a: [33, 37, 25, 16, 6]
-Expected Output: [3]
+	corr4 = [3]
+	if mostFrequentDigits([33, 37, 25, 16, 6]) == corr4:
+		print('Correct!')
+	else:
+		print(f'Wrong! Expected Output: {corr4}\n'
+		      f'Your Output: {mostFrequentDigits([33, 37, 25, 16, 6])}')
 
-a: [98]
-Expected Output: [8, 9]
+	corr5 = [8, 9]
+	if mostFrequentDigits([98]) == corr5:
+		print('Correct!')
+	else:
+		print(f'Wrong! Expected Output: {corr5}\n'
+		      f'Your Output: {mostFrequentDigits([98])}')
 
-a: [99]
-Expected Output: [9]
+	corr6 = [9]
+	if mostFrequentDigits([99]) == corr6:
+		print('Correct!')
+	else:
+		print(f'Wrong! Expected Output: {corr6}\n'
+		      f'Your Output: {mostFrequentDigits([99])}')
 
-a: [90, 81, 22, 36, 41, 57, 58, 97, 40, 36]
-Expected Output: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+	corr7 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+	if mostFrequentDigits([90, 81, 22, 36, 41, 57, 58, 97, 40, 36]) == corr7:
+		print('Correct!')
+	else:
+		print(f'Wrong! Expected Output: {corr7}\n'
+		      f'Your Output: {mostFrequentDigits([90, 81, 22, 36, 41, 57, 58, 97, 40, 36])}')
 
-a: [31, 60, 53, 54, 25, 87, 33, 95]
-Expected Output: [3, 5]
+	corr8 = [3, 5]
+	if mostFrequentDigits([31, 60, 53, 54, 25, 87, 33, 95]) == corr8:
+		print('Correct!')
+	else:
+		print(f'Wrong! Expected Output: {corr8}\n'
+		      f'Your Output: {mostFrequentDigits([31, 60, 53, 54, 25, 87, 33, 95])}')
 
-a: [28, 12, 48, 23, 76, 64, 65, 50, 54, 98]
-Expected Output: [2, 4, 5, 6, 8]
+	corr9 = [2, 4, 5, 6, 8]
+	if mostFrequentDigits([28, 12, 48, 23, 76, 64, 65, 50, 54, 98]) == corr9:
+		print('Correct!')
+	else:
+		print(f'Wrong! Expected Output: {corr9}\n'
+		      f'Your Output: {mostFrequentDigits([28, 12, 48, 23, 76, 64, 65, 50, 54, 98])}')
 
-a: [35, 72, 38, 58, 80, 74, 94, 47, 50, 99, 41, 70, 98, 33, 50]
-Expected Output: [0, 3, 4, 5, 7, 8, 9]
+	corr10 = [0, 3, 4, 5, 7, 8, 9]
+	if mostFrequentDigits([35, 72, 38, 58, 80, 74, 94, 47, 50, 99, 41, 70, 98, 33, 50]) == corr10:
+		print('Correct!')
+	else:
+		print(f'Wrong! Expected Output: {corr10}\n'
+		      f'Your Output: {mostFrequentDigits([35, 72, 38, 58, 80, 74, 94, 47, 50, 99, 41, 70, 98, 33, 50])}')
 
-a: [47, 50, 63, 85, 64, 62, 92, 29, 18, 70, 96, 50, 87, 73, 90, 98, 55, 24, 13, 70, 30, 17, 22, 84, 13, 91, 35, 46, 21, 69, 30, 15, 77, 40, 35, 85, 91, 98, 60, 82, 64, 98, 56, 47, 84, 20, 16, 13, 74, 32]
-Expected Output: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-a: [25, 2, 3, 57, 38, 41]
-Expected Output: [2, 3, 5]
+	corr11 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+	if mostFrequentDigits([47, 50, 63, 85, 64, 62, 92, 29, 18, 70, 96, 50, 87, 73, 90, 98, 55, 24, 13, 70, 30, 17, 22, 84, 13, 91, 35, 46, 21, 69, 30, 15, 77, 40, 35, 85, 91, 98, 60, 82, 64, 98, 56, 47, 84, 20, 16, 13, 74, 32]) == corr11:
+		print('Correct!')
+	else:
+		print(f'Wrong! Expected Output: {corr11}\n'
+		      f'Your Output: {mostFrequentDigits([47, 50, 63, 85, 64, 62, 92, 29, 18, 70, 96, 50, 87, 73, 90, 98, 55, 24, 13, 70, 30, 17, 22, 84, 13, 91, 35, 46, 21, 69, 30, 15, 77, 40, 35, 85, 91, 98, 60, 82, 64, 98, 56, 47, 84, 20, 16, 13, 74, 32])}')
+
+	corr12 = [2, 3, 5]
+	if mostFrequentDigits([25, 2, 3, 57, 38, 41]) == corr12:
+		print('Correct!')
+	else:
+		print(f'Wrong! Expected Output: {corr12}\n'
+		      f'Your Output: {mostFrequentDigits([25, 2, 3, 57, 38, 41])}')
