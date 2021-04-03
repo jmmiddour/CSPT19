@@ -28,4 +28,20 @@ Input/Output:
 	true if `n` is a lucky ticket number, false otherwise.
 """
 
+"""
+1. Split the given integer in half
+2. Add all the digits on the left and on the right of the split
+3. Return a bool if the left sum == the right sum
+"""
+
 def isLucky(n):
+	# Split the given integer into a list of single digits
+	n = [x for x in str(n)]
+	# Create a left list of digits
+	left = [int(val) for val in n[:len(n) // 2]]
+	# Create a right list of the digits
+	right = [int(val) for val in n[len(n) // 2:]]
+
+	# Return True or False if
+	#   the left and right summed list are equal.
+	return sum(left) == sum(right)
