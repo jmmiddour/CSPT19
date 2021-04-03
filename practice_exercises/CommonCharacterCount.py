@@ -28,5 +28,24 @@ Input/Output:
 """
 
 """
-
+Plan:
+1. Create a counter variable to keep track of the same chars.
+2. Iterate through both strings to find the chars that are the same in both.
+3. Return the counter
 """
+
+def commonCharacterCount(s1, s2):
+    # Create a counter variable
+    count = 0
+
+    # Iterate through the 1st string
+    for i in range(len(s1)):
+        # If the current character is in string 2...
+        if s1[i] in s2:
+            # Remove that character from string 2
+            s2 = s2.replace(s1[i], '', 1)
+            # Increament the counter variable
+            count += 1
+
+    # Return the count of the same characters
+    return count
