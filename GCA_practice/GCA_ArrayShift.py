@@ -67,21 +67,30 @@ by one while checking if it is equal to one of my identity arrays.
 
 
 def arrayShift(elements):
+	# Create an identity array from the elements array
 	id_arr = [x for x in range(1, len(elements) + 1, 1)]
+	# Create a reverse identity array from the identity array
 	rev_id_arr = id_arr[::-1]
 
+	# Iterate through the list of elements
 	for i in range(len(elements)):
-		keep = elements
-		keep = keep[0:-1]
-		print(f'Keep arr: {keep}')
+		# Create a keep list starting with 1st element to 2nd from last element
+		keep = elements[0:-1]
+		# Create the new array with the last element as the 1st element
 		new = [elements[-1]] + keep
-		print(f'New arr: {new}')
 
+		# Check if the new array is equal to the id array or
+		#   the reversed id array
 		if new == id_arr or new == rev_id_arr:
+			# Return True if the condition is met, function has completed
 			return True
 
+		# If the condition above is not True
 		else:
+			# Reassign elements to the new array
 			elements = new
+			# Continue through the loop
 			continue
 
+	# If the condition is never met, return False
 	return False
