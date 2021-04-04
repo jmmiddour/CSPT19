@@ -61,35 +61,95 @@ Input/Output:
 
 """
 1. Create a list to store the values from the matrix.
-2. Sort the values by the number of times they occure.
+2. Sort the values by the number of times they occur.
 3. Add the values to a new matrix with the most frequent in the upper left 
 corner.
 4. Return the new matrix.
+
+For a 3 x 3 matrix:
+The order for each value to be replaced by sorted value:
+    0 | 1 | 2
+0 [ 9 | 8 | 6 ]
+1 [ 7 | 5 | 3 ]
+2 [ 4 | 2 | 1 ]
+
+For row[i] col[j] = [i][j] starting at [2][2]
+1. [2][2] = [i]   [j]
+2. [2][1] = [i]   [j-1]
+3. [1][2] = [i-1] [j]
+4. [2][0] = [i]   [j-2]
+5. [1][1] = [i-1] [j-1]
+6. [0][2] = [i-2] [j]
+7. [1][0] = [i-1] [j-2]
+8. [0][1] = [i-2] [j-1]
+9. [0][0] = [i-2] [j-2]
+
+For a 5 x 5 matrix:
+The order for each value to be replaced by sorted value:
+    0  | 1  | 2  | 3  | 4
+0 [ 25 | 24 | 22 | 19 | 15 ]
+1 [ 23 | 21 | 18 | 14 | 10 ]
+2 [ 20 | 17 | 13 | 9  | 6  ]
+3 [ 16 | 12 | 8  | 5  | 3  ]
+4 [ 11 | 7  | 4  | 2  | 1  ]
+
+For row[i] col[j] = [i][j] starting at [4][4]
+1 . [4][4] = [i]   [j]
+2 . [4][3] = [i]   [j-1]
+3 . [3][4] = [i-1] [j]
+4 . [4][2] = [i]   [j-2]
+5 . [3][3] = [i-1] [j-1]
+6 . [2][4] = [i-2] [j]
+7 . [4][1] = [i]   [j-3]
+8 . [3][2] = [i-1] [j-2]
+9 . [2][3] = [i-2] [j-1]
+10. [1][4] = [i-3] [j]
+11. [4][0] = [i]   [j-4]
+12. [3][1] = [i-1] [j-3]
+13. [2][2] = [i-2] [j-2]
+14. [1][3] = [i-3] [j-1]
+15. [0][4] = [i-4] [j]
+16. [3][0] = [i-1] [j-4]
+17. [2][1] = [i-2] [j-3]
+18. [1][2] = [i-3] [j-2]
+19. [0][3] = [i-4] [j-1]
+20. [2][0] = [i-2] [j-4]
+21. [1][1] = [i-3] [j-3]
+22. [0][2] = [i-4] [j-2]
+23. [1][0] = [i-3] [j-4]
+24. [0][1] = [i-4] [j-3]
+25. [0][0] = [i-4] [j-4]
 """
 
 from collections import Counter
 
 
 def sortMatrixByOccurrences(m):
+	no_rows = len(m)
+	no_cols = len(m[0])
+
+	print(f'Rows: {no_rows} x Columns: {no_cols}\n')
+
 	vals = []
-	for i in range(len(m)):
-		for j in range(len(m[i])):
-			vals.append(m[i][j])
+	for row in range(no_rows):
+		for col in range(no_cols):
+			vals.append(m[row][col])
 
-	print(f'vals list: {vals}')
+	print(f'vals list: {vals}\n')
 
-	sort_vals = [item for items,
-	                      c in Counter(vals).most_common() for item in [
-		items] * c]
+	sort_vals = sorted(sorted(vals), key=Counter(vals).get)
 
-	sort_mat = m.copy()
+	print(f'sort_vals list: {sort_vals}\n')
+
+	sort_mat = [[0] * no_cols] * no_rows
+
+	print(f'Sorted Matrix: {sort_mat}\n')
 
 	for i in range(len(sort_vals)):
-		for vals in range(len(sort_mat)):
-			if sort_vals[i] not in sort_mat[vals]:
-				sort_mat[vals].append(sort_vals[i:len(sort_mat[vals])])
+		# for vals in range(len(sort_mat)):
+		# 	if sort_vals[i] not in sort_mat[vals]:
+		# 		sort_mat[vals] = sort_vals[i:no_cols]
 
-	print(f'sort_vals list: {sort_vals}')
 
 	return sort_mat
 
@@ -103,19 +163,21 @@ if __name__ == '__main__':
 	       [3, 4, 1],
 	       [1, -2, -2]]
 	if sortMatrixByOccurrences(m) == ans:
-		print(f'PASSED! The answer is: {ans}')
+		print(f'PASSED! The answer is: {ans}\n')
 	else:
 		print(f'Your Output: {sortMatrixByOccurrences(m)}')
-		print(f'Correct Output: {ans}')
+		print(f'Correct Output: {ans}\n')
 
-	m = [[3, 2, -2],
-	     [-2, 4, 6],
-	     [1, 2, 3]]
-	ans = [[3, 3, 2],
-	       [2, -2, 6],
-	       [-2, 4, 1]]
+	m = [[3, 2, -2, 5],
+	     [-2, 4, 6, 5],
+	     [1, 2, 3, 3],
+	     [2, 5, 6, 1]]
+	ans = [[2, 2, 2, 5],
+	       [2, 5, 3, 6],
+	       [5, 3, 6, 1],
+	       [3, 1, 4, -2]]
 	if sortMatrixByOccurrences(m) == ans:
-		print(f'PASSED! The answer is: {ans}')
+		print(f'PASSED! The answer is: {ans}\n')
 	else:
 		print(f'Your Output: {sortMatrixByOccurrences(m)}')
-		print(f'Correct Output: {ans}')
+		print(f'Correct Output: {ans}\n')
