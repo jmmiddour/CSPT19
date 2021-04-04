@@ -73,24 +73,36 @@ Input/Output:
 
 
 def checkOperations(a, signs, b, c):
+	# Create an output list for the bool values
 	output = []
+	# Join the signs into one string
 	signs = ''.join(signs)
-	print(signs)
 
+	# Iterate through the lists
 	for i in range(len(a)):
-		# print(f'signs at i: {signs[i]}')
+		# If signs[i] is a + symbol
 		if signs[i] == '+':
+			# Check if the expression is True
 			if (a[i] + b[i]) == c[i]:
+				# Add True to the output list
 				output.append(True)
 
+			# If the above expression is not True
 			else:
+				# Add False to the output list
 				output.append(False)
 
+		# If signs[i] is a - symbol
 		elif signs[i] == '-':
+			# Check if the expression is True
 			if (a[i] - b[i]) == c[i]:
+				# Add True to the output list
 				output.append(True)
 
+			# If the above expression is not True
 			else:
+				# Add False to the output list
 				output.append(False)
 
+	# Return my list of booleans
 	return output
