@@ -1,45 +1,60 @@
 """
-For two arrays of the same length a and b, let's say a is a cyclic shift of b if it's possible for a to become equal to b by moving 0 or more last elements to the beginning of the array, without changing the internal order.
+For two arrays of the same length `a` and `b`, let's say `a` is a
+	"cyclic shift" of `b` if it's possible for `a` to become equal to `b`
+	by moving 0 or more last elements to the beginning of the array,
+	without changing the internal order.
 
-demonstration
+Demonstration:
 
-You are given an array of integers elements. Your task is to check whether elements is a cyclic shift of the identity array [1, 2, ..., elements.length] or the reversed identity array [elements.length, elements.length - 1, ..., 1]. Return true if elements is a cyclic shift of the identity or reversed identity array, otherwise return false.
+You are given an array of integers `elements`.
+Your task is to check whether `elements` is a "cyclic shift" of the
+	"identity array" [1, 2, ..., elements.length] or the
+	"reversed identity array" [elements.length, elements.length - 1, ..., 1].
+	Return `True` if `elements` is a `cyclic shift` of the `identity` or
+	`reversed identity` array, otherwise return `False`.
 
-Example
+Example:
 
-For elements = [1, 4, 2, 3], the output should be arrayShift(elements) = false.
+For `elements = [1, 4, 2, 3]`, the output should be:
+	arrayShift(elements) = False.
 
 Let's consider all the cyclic shifts of elements:
 
-Moving 0 elements from the end to the beginning, we get [1, 4, 2, 3].
-Moving 1 elements from the end to the beginning, we get [3, 1, 4, 2].
-Moving 2 elements from the end to the beginning, we get [2, 3, 1, 4].
-Moving 3 elements from the end to the beginning, we get [4, 2, 3, 1].
-None of these cyclic shifts equal the identity array [1, 2, 3, 4] or to the reversed identity array [4, 3, 2, 1]. So the answer is false.
+- Moving 0 elements from the end to the beginning, we get [1, 4, 2, 3].
+- Moving 1 elements from the end to the beginning, we get [3, 1, 4, 2].
+- Moving 2 elements from the end to the beginning, we get [2, 3, 1, 4].
+- Moving 3 elements from the end to the beginning, we get [4, 2, 3, 1].
+- None of these cyclic shifts equal the identity array [1, 2, 3, 4] or
+	the reversed identity array [4, 3, 2, 1]. So the answer is False.
 
-For elements = [3, 4, 1, 2], the output should be arrayShift(elements) = true.
+For `elements = [3, 4, 1, 2]`, the output should be:
+	arrayShift(elements) = True.
 
-If we move the last 2 elements of the given array from the end to the beginning, we get [1, 2, 3, 4], which is the identity array, so the answer is true.
+- If we move the last 2 elements of the given array from the end to the
+	beginning, we get [1, 2, 3, 4], which is the identity array,
+	so the answer is True.
 
-For elements = [3, 2, 1, 4], the output should be arrayShift(elements) = true.
+For `elements = [3, 2, 1, 4]`, the output should be:
+	arrayShift(elements) = True.
 
-If we move the last element of the given array to the beginning, we get [4, 3, 2, 1], which is the reversed identity array, so the answer is true.
+- If we move the last element of the given array to the beginning, we get
+	[4, 3, 2, 1], which is the reversed identity array, so the answer is True.
 
-Input/Output
+Input/Output:
 
 [execution time limit] 4 seconds (py3)
 
 [input] array.integer elements
+	An array of integers.
 
-An array of integers.
-
-Guaranteed constraints:
-3 ≤ elements.length ≤ 100,
-1 ≤ elements[i] ≤ elements.length.
+	Guaranteed constraints:
+		3 ≤ elements.length ≤ 100,
+		1 ≤ elements[i] ≤ elements.length.
 
 [output] boolean
-
-Return true if elements is a cyclic shift of either identity array [1, 2, ..., elements.length] or reversed identity array [elements.length, elements.length - 1, ..., 1]. Otherwise, return false.
+	Return True if elements is a cyclic shift of either identity array
+		[1, 2, ..., elements.length] or reversed identity array
+		[elements.length, elements.length - 1, ..., 1]. Otherwise, return False.
 """
 
 """
