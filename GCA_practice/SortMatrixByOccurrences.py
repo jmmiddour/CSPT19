@@ -9,8 +9,7 @@ Given a square matrix of integers m, your task is to rearrange its numbers
 - Second, place the sorted numbers diagonally, starting from the bottom right
 	corner, like this:
 
-![element ordering]https://codesignal.s3.amazonaws.com/tasks
-/sortMatrixByOccurrences/img/sortMatrixByOccurrences.gif?_tm=1582092096487
+![element ordering]https://codesignal.s3.amazonaws.com/tasks/sortMatrixByOccurrences/img/sortMatrixByOccurrences.gif?_tm=1582092096487
 
 Example
 
