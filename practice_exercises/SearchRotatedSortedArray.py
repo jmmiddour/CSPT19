@@ -24,11 +24,11 @@ items in the list. There is an O(log n) solution. There is also an O(1)
 solution.
 
 Note:
+	1 <= nums.length < 100
+	1 <= nums[i] <= 100
+	All values of nums are unique.
+	Numbers from 1 up to the length of the list will be contained in the list.
 
-1 <= nums.length < 100
-1 <= nums[i] <= 100
-All values of nums are unique.
-Numbers from 1 up to the length of the list will be contained in the list.
 [execution time limit] 4 seconds (py3)
 
 [input] array.integer nums
