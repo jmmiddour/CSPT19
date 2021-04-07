@@ -81,14 +81,6 @@ def checkBlanagrams(word1, word2):
 
 	return len(word2) == 1
 
-	# # Check if there is only one char left after loop
-	# if len(word2) == 1:
-	# 	# Return True if condition is met
-	# 	return True
-	#
-	# # Otherwise,, return False
-	# return False
-
 
 # Testing:
 if __name__ == '__main__':
