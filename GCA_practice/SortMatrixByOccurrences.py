@@ -120,37 +120,254 @@ For row[i] col[j] = [i][j] starting at [4][4]
 25. [0][0] = [i-4] [j-4]
 """
 
-from collections import Counter
+# from collections import Counter
+# # import numpy as np
+#
+# def sortMatrixByOccurrences(m):
+# 	no_rows = len(m)
+# 	no_cols = len(m[0])
+#
+# 	print(f'Rows: {no_rows} x Columns: {no_cols}\n')
+#
+# 	vals = []
+# 	for row in range(no_rows):
+# 		for col in range(no_cols):
+# 			vals.append(m[row][col])
+#
+# 	print(f'vals list: {vals}\n')
+#
+# 	sort_vals = sorted(sorted(vals), key=Counter(vals).get)
+# 	sort_vals_rev = sort_vals[::-1]
+#
+# 	print(f'sort_vals list: {sort_vals}\n')
+# 	print(f'sort_vals_rev list: {sort_vals_rev}\n')
+#
+# 	# sort_mat = [[0] * no_cols] * no_rows
+# 	sort_mat = [[] for _ in range(no_rows)]
+#
+# 	print(f'Sorted Matrix: {sort_mat}\n')
+#
+# 	counter = 0
+# 	for i in range(1, (no_rows * 2)):
+# 		len_row = 1
+#
+# 		if i <= no_rows:
+# 			len_row = i
+# 			print(f'Length of row in if: {len_row}')
+#
+# 		else:
+# 			len_row = no_rows - (i - no_rows)
+# 			print(f'Length of row in else: {len_row}')
+#
+# 		for j in range(len_row):
+# 			sort_mat[i][j] = sort_vals_rev[counter]
+# 			counter += 1
+# 			print(f'Sorted Matrix: {sort_mat}')
+# 		# 	if sort_vals[i] not in sort_mat[vals]:
+# 		# 		sort_mat[vals] = sort_vals[i:no_cols]
+#
+# 	# sort_mat_np = np.fill_diagonal(sort_mat, sort_vals_rev)
+# 	# print(f'Sort Matrix with np: {sort_mat_np}')
+#
+# 	return sort_mat
+
+# from collections import Counter
+#
+# def sortMatrixByOccurrences(m):
+# 	no_rows = len(m)
+# 	# no_cols = len(m[0])
+# 	vals = []
+#
+# 	# for row in range(no_rows):
+# 	#     for col in range(no_cols):
+# 	#         vals.append(m[row][col])
+# 	for row in range(no_rows):
+# 		vals.extend(m[row])
+#
+# 	# counted_vals = {}
+# 	# for i in vals:
+# 	# 	if i in counted_vals:
+# 	# 		counted_vals[i] += 1
+# 	#
+# 	# 	else:
+# 	# 		counted_vals[i] = 1
+# 	#
+# 	# print(counted_vals)
+# 	#
+# 	# new_dict = {}
+# 	# for key, val in counted_vals.items():
+# 	# 	if val in new_dict:
+# 	# 		new_dict[val].append(key)
+# 	#
+# 	# 	else:
+# 	# 		new_dict[val] = [key]
+# 	#
+# 	# print(new_dict)
+# 	#
+# 	# max_items = max(new_dict.keys())
+# 	# sort_vals_rev = []
+# 	# for i in range(max_items):
+# 	# 	if i in new_dict:
+# 	# 		print(new_dict)
+# 	# 		sorted_vals = sorted(new_dict[i], reverse=True)
+# 	# 		print(sorted_vals)
+# 	# 		temp_list = []
+# 	# 		for j in sorted_vals:
+# 	# 			temp_list.extend([j] * i)
+# 	# 		sorted_vals_rev2.extend(temp_list)
+# 	# 	print(sort_vals_rev)
+#
+# 	sort_vals = sorted(sorted(vals), key=Counter(vals).get)
+# 	sort_vals_rev = sort_vals[::-1]
+#
+# 	sort_mat = [[] for _ in range(no_rows)]
+#
+# 	counter = 0
+# 	row = 0
+#
+# 	for i in range(1, (no_rows * 2)):  # 1, 2, 3, 4, 5
+# 		if i <= no_rows:  # 1, 2, 3
+# 			len_row = i  # 1, 2, 3
+#
+# 		else:  # 4, 5
+# 			len_row = no_rows - (i - no_rows)  # 2, 1
+# 			row += 1  # 1, 2
+#
+# 		for j in range(len_row):  # 1, 2, 3, 2, 1
+# 			sort_mat[row + j].append(sort_vals_rev[counter])
+# 			counter += 1
+#
+# 	return sort_mat
 
 
-def sortMatrixByOccurrences(m):
-	no_rows = len(m)
-	no_cols = len(m[0])
+# ### Alexis Solution ### #
+def order_array(two_d_arr: list) -> list:
+	"""
+	Sort values of a 2D-array in ascending order of how frequently the number
+	occurs in m. In the case of a tie, sort the equally frequent numbers
+	by their values, in ascending order.
 
-	print(f'Rows: {no_rows} x Columns: {no_cols}\n')
+	:param two_d_array: A 2D-array of any dimension
+	:type two_d_array: list
+	...
+	:return: A flattened properly sorted list
+	:rtype: list
+	"""
 
-	vals = []
-	for row in range(no_rows):
-		for col in range(no_cols):
-			vals.append(m[row][col])
+	# Create a dictionary to hold the frequency count as val and
+	#   element as the key
+	hash_map = {}
+	# Essentially doing the same as extend
+	flat_list = sum(two_d_arr, [])
+	# print(flat_list)
 
-	print(f'vals list: {vals}\n')
+	# counting occurrences
+	for num in flat_list:
+		# If the num is not already in the dictionary,
+		#   it has not been seen yet.
+		if num not in hash_map:
+			# Add it to the dictionary with num as the key and 1 as the val
+			hash_map[num] = 1
 
-	sort_vals = sorted(sorted(vals), key=Counter(vals).get)
+		# If the num is already in the dictionary...
+		elif num in hash_map:
+			# Increment the val by one
+			hash_map[num] += 1
 
-	print(f'sort_vals list: {sort_vals}\n')
-
-	sort_mat = [[0] * no_cols] * no_rows
-
-	print(f'Sorted Matrix: {sort_mat}\n')
-
-	for i in range(len(sort_vals)):
-		# for vals in range(len(sort_mat)):
-		# 	if sort_vals[i] not in sort_mat[vals]:
-		# 		sort_mat[vals] = sort_vals[i:no_cols]
+	# ordering m hash_map into list
+	sort_list = sorted(flat_list, key=lambda num: (hash_map[num], num))
+	print(sort_list[::-1])
+	return sort_list[::-1]
 
 
-	return sort_mat
+def calc_diagonals(m: list) -> list:
+	"""
+	Calculates the diagonals in a symmetrical 2D-array
+
+	:param m: Symmetrical 2D-array
+	:type m: list
+	...
+	:return: ordered list of spots that make up diagonals
+	:rtype: list
+	"""
+
+	# Get the length of m matrix
+	len_m = len(m)
+	# Create a counter variable
+	counter = 0
+	# Get the area of the square matrix m
+	num_spots = len_m * len_m
+	# Create a pointer for the x axis
+	pos_x = 0
+	# Create a pointer for the y axis
+	pos_y = 0
+	# Create a list for the diagonals
+	diagonals = []
+
+	# Not sure why this yet?
+	is_up = True
+
+	# Continue to iterate while the counter is less than the num_spots
+	while counter < num_spots:
+		# Not sure why this yet?
+		if is_up:
+			# Continue iterating while x axis is greater or equal to 0
+			#   and y axis is less than the length of m
+			while pos_x >= 0 and pos_y < len_m:
+
+				diagonals.append((pos_x, pos_y))
+				pos_y += 1
+				pos_x -= 1
+				counter += 1
+				print(f'Dia 1: {diagonals}')
+
+			if pos_x < 0 and pos_y <= (len_m - 1):
+				pos_x = 0
+				print(f'Dia 2: {diagonals}')
+
+			if pos_y == len_m:
+				pos_x += 2
+				pos_y -= 1
+				print(f'Dia 3: {diagonals}')
+
+		else:
+			while pos_y >= 0 and pos_x < len_m:
+				diagonals.append((pos_x, pos_y))
+				pos_x += 1
+				pos_y -= 1
+				counter += 1
+				print(f'Dia 4: {diagonals}')
+
+			if pos_y < 0 and pos_x <= (len_m - 1):
+				pos_y = 0
+				# pos_x, pos_y = pos_y, pos_x
+				print(f'Dia 5: {diagonals}')
+
+			if pos_x == len_m:
+				pos_y += 2
+				pos_x -= 1
+				print(f'Dia 6: {diagonals}')
+
+		is_up = not is_up
+
+	return diagonals
+
+
+def sortMatrixByOccurrences(m: list) -> list:
+	sorted_array = order_array(m)
+	diagonals = calc_diagonals(m)
+
+	# creates empty result array of size m
+	result = [[None for i in range(len(m))] for j in range(len(m))]
+
+	index = 0
+	for pos_x, pos_y in diagonals:
+		try:
+			result[pos_x][pos_y] = sorted_array[index]
+			index += 1
+		except IndexError:
+			pass
+	return result
 
 
 # Testing:
@@ -167,16 +384,16 @@ if __name__ == '__main__':
 		print(f'Your Output: {sortMatrixByOccurrences(m)}')
 		print(f'Correct Output: {ans}\n')
 
-	m = [[3, 2, -2, 5],
-	     [-2, 4, 6, 5],
-	     [1, 2, 3, 3],
-	     [2, 5, 6, 1]]
-	ans = [[2, 2, 2, 5],
-	       [2, 5, 3, 6],
-	       [5, 3, 6, 1],
-	       [3, 1, 4, -2]]
-	if sortMatrixByOccurrences(m) == ans:
-		print(f'PASSED! The answer is: {ans}\n')
-	else:
-		print(f'Your Output: {sortMatrixByOccurrences(m)}')
-		print(f'Correct Output: {ans}\n')
+	# m = [[3, 2, -2, 5],
+	#      [-2, 4, 6, 5],
+	#      [1, 2, 3, 3],
+	#      [2, 5, 6, 1]]
+	# ans = [[5, 5, 3, 2],
+	#        [5, 3, 2, 6],
+	#        [3, 2, 1, -2],
+	#        [6, 1, -2, 4]]
+	# if sortMatrixByOccurrences(m) == ans:
+	# 	print(f'PASSED! The answer is: {ans}\n')
+	# else:
+	# 	print(f'Your Output: {sortMatrixByOccurrences(m)}')
+	# 	print(f'Correct Output: {ans}\n')
