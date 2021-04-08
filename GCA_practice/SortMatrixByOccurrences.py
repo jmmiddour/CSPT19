@@ -314,7 +314,6 @@ def calc_diagonals(m: list) -> list:
 			# Continue iterating while x axis is greater or equal to 0
 			#   and y axis is less than the length of m
 			while pos_x >= 0 and pos_y < len_m:
-
 				diagonals.append((pos_x, pos_y))
 				pos_y += 1
 				pos_x -= 1
@@ -340,7 +339,7 @@ def calc_diagonals(m: list) -> list:
 
 			if pos_y < 0 and pos_x <= (len_m - 1):
 				pos_y = 0
-				# pos_x, pos_y = pos_y, pos_x
+				pos_x, pos_y = pos_y, pos_x
 				print(f'Dia 5: {diagonals}')
 
 			if pos_x == len_m:
