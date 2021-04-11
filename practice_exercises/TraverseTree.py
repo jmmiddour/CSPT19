@@ -59,14 +59,12 @@ Input/Output:
 [output] array.integer
 	An array that contains the values at t's nodes, ordered as described above.
 """
-
-#
 # Binary trees are already defined with this interface:
-# class Tree(object):
-#   def __init__(self, x):
-#     self.value = x
-#     self.left = None
-#     self.right = None
+class Tree(object):
+  def __init__(self, x):
+    self.value = x
+    self.left = None
+    self.right = None
 
 # Import deque (double-ended queue)
 from collections import deque
@@ -128,3 +126,49 @@ def traverseTree(t):
 
 	# Return the results list as a 1D list
 	return sum(results, [])
+
+
+# Testing:
+if __name__ == '__main__':
+	# Test 1:
+	t = Tree(1)
+	t.left = Tree(2)
+	t.left.right = Tree(3)
+	t.right = Tree(4)
+	t.right.left = Tree(5)
+	ans = [1, 2, 4, 3, 5]
+	if ans == traverseTree(t):
+		print('PASSED!')
+	else:
+		print(f'Failed:\nYour Output --> {traverseTree(t)}\nCorrect Output '
+		      f'--> {ans}')
+
+	# Test 2:
+	t = None
+	ans = []
+	if ans == traverseTree(t):
+		print('PASSED!')
+	else:
+		print(f'Failed:\nYour Output --> {traverseTree(t)}\nCorrect Output '
+		      f'--> {ans}')
+
+	# Test 3:
+	t = Tree(2)
+	t.left = Tree(1)
+	t.left.right = Tree(0)
+	ans = [2, 1, 0]
+	if ans == traverseTree(t):
+		print('PASSED!')
+	else:
+		print(f'Failed:\nYour Output --> {traverseTree(t)}\nCorrect Output '
+		      f'--> {ans}')
+
+	# Test 4:
+	t = Tree(15)
+	t.left = Tree(15)
+	ans = [15, 15]
+	if ans == traverseTree(t):
+		print('PASSED!')
+	else:
+		print(f'Failed:\nYour Output --> {traverseTree(t)}\nCorrect Output '
+		      f'--> {ans}')
