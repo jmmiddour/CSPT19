@@ -114,40 +114,67 @@ if __name__ == '__main__':
 	if ans == removeOneDigit(s, t):
 		print(f'PASSED!')
 	else:
-		print(f'')
+		print(f'Failed: Correct Output: {ans}')
 
 	# Test 2
 	s = "ab12c"
 	t = "ab24z"
 	ans = 3
+	if ans == removeOneDigit(s, t):
+		print(f'PASSED!')
+	else:
+		print(f'Failed: Correct Output: {ans}')
 
 	# Test 3
 	s = "96726"
 	t = "9z34c"
-	Output:
 	ans = 8
+	if ans == removeOneDigit(s, t):
+		print(f'PASSED!')
+	else:
+		print(f'Failed: Correct Output: {ans}')
 
 	# Test 4
 	s = "4u05q"
 	t = "ed0r7"
 	ans = 4
+	if ans == removeOneDigit(s, t):
+		print(f'PASSED!')
+	else:
+		print(f'Failed: Correct Output: {ans}')
 
 	# Test 5
 	s = "6"
 	t = "h"
 	ans = 1
+	if ans == removeOneDigit(s, t):
+		print(f'PASSED!')
+	else:
+		print(f'Failed: Correct Output: {ans}')
 
 	# Test 6
 	s = "d"
 	t = "6"
 	ans = 0
+	if ans == removeOneDigit(s, t):
+		print(f'PASSED!')
+	else:
+		print(f'Failed: Correct Output: {ans}')
 
 	# Test 7
 	s = "5"
 	t = "4"
 	ans = 1
+	if ans == removeOneDigit(s, t):
+		print(f'PASSED!')
+	else:
+		print(f'Failed: Correct Output: {ans}')
 
 	# Test 8
 	s = "d"
 	t = "q"
 	ans = 0
+	if ans == removeOneDigit(s, t):
+		print(f'PASSED!')
+	else:
+		print(f'Failed: Correct Output: {ans}')
