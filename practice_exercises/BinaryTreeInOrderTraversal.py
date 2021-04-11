@@ -20,14 +20,14 @@ Output: [2,4,3]
 [output] array.integer
 """
 
-
-#
 # Binary trees are already defined with this interface:
-# class Tree(object):
-#   def __init__(self, x):
-#     self.value = x
-#     self.left = None
-#     self.right = None
+class Tree(object):
+	def __init__(self, x):
+		self.value = x
+		self.left = None
+		self.right = None
+
+
 def binaryTreeInOrderTraversal(root):
 	# Check if the given tree is empty
 	if root is None:
@@ -64,17 +64,12 @@ def helper(node, results):
 
 
 if __name__ == '__main__':
-	root = {
-		"value": 2,
-		"left": null,
-		"right": {
-			"value": 3,
-			"left": {
-				"value": 4,
-				"left": null,
-				"right": null
-			},
-			"right": null
-		}
-	}
+	root = Tree(2)
+	root.right = Tree(3)
+	root.right.left = Tree(4)
 	ans = [2, 4, 3]
+	if ans == binaryTreeInOrderTraversal(root):
+		print('PASSED!')
+	else:
+		print(f'Failed:\nYour Output --> '
+		      f'{binaryTreeInOrderTraversal(root)}\nCorrect Output --> {ans}')
