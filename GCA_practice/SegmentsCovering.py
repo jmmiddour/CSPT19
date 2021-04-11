@@ -49,64 +49,62 @@ An integer representing the minimum number of points to cover all the given segm
 
 def segmentsCovering(segments):
 
-"""
-Input:
-segments:
-[[-1,3], 
- [-5,-3], 
- [3,5], 
- [2,4], 
- [-3,-2], 
- [-1,4], 
- [5,5]]
-Expected Output:
-3
 
-Input:
-segments: [[-1000000000,1000000000]]
-Expected Output:
-1
 
-Input:
-segments:
-[[-1000000000,-1000000000], 
- [0,0], 
- [1000000000,1000000000]]
-Expected Output:
-3
 
-Input:
-segments:
-[[-2,-1], 
- [-1,0], 
- [0,1], 
- [1,2]]
-Expected Output:
-2
+# Testing:
+if __name__ == '__main__':
+	# Test 1
+	segments = [[-1,3], [-5,-3], [3,5], [2,4], [-3,-2], [-1,4], [5,5]]
+	ans = 3
+	if ans == segmentsCovering(segments):
+		print('PASSED Test 1!')
+	else:
+		print(f'Failed Test 1:\nYour Output --> '
+		      f'{segmentsCovering(segments)}\nCorrect Output --> {ans}')
 
-Input:
-segments:
-[[-5,5], 
- [-4,4], 
- [-3,3], 
- [-2,2], 
- [-1,1], 
- [0,0]]
-Expected Output:
-1
+	# Test 2
+	segments = [[-1000000000,1000000000]]
+	ans = 1
+	if ans == segmentsCovering(segments):
+		print('PASSED Test 2!')
+	else:
+		print(f'Failed Test 2:\nYour Output --> '
+		      f'{segmentsCovering(segments)}\nCorrect Output --> {ans}')
 
-Input:
-segments:
-[[-1,0], 
- [-2,0], 
- [-1,2], 
- [-2,1], 
- [-2,1], 
- [-2,-1], 
- [0,1], 
- [1,2], 
- [-1,1], 
- [-1,0]]
-Expected Output:
-2
-"""
+	# Test 3
+	segments = [[-1000000000,-1000000000], [0,0], [1000000000,1000000000]]
+	ans = 3
+	if ans == segmentsCovering(segments):
+		print('PASSED Test 3!')
+	else:
+		print(f'Failed Test 3:\nYour Output --> '
+		      f'{segmentsCovering(segments)}\nCorrect Output --> {ans}')
+
+	# Test 4
+	segments = [[-2,-1], [-1,0], [0,1], [1,2]]
+	ans = 2
+	if ans == segmentsCovering(segments):
+		print('PASSED Test 4!')
+	else:
+		print(f'Failed Test 4:\nYour Output --> '
+		      f'{segmentsCovering(segments)}\nCorrect Output --> {ans}')
+
+	# Test 5
+	segments: [[-5,5], [-4,4], [-3,3], [-2,2], [-1,1], [0,0]]
+	ans = 1
+	if ans == segmentsCovering(segments):
+		print('PASSED Test 5!')
+	else:
+		print(f'Failed Test 5:\nYour Output --> '
+		      f'{segmentsCovering(segments)}\nCorrect Output --> {ans}')
+
+	# Test 6
+	segments = [[-1,0], [-2,0], [-1,2], [-2,1], [-2,1],
+	            [-2,-1], [0,1], [1,2], [-1,1], [-1,0]]
+	ans = 2
+	if ans == segmentsCovering(segments):
+		print('PASSED Test 6!')
+	else:
+		print(f'Failed Test 6:\nYour Output --> '
+		      f'{segmentsCovering(segments)}\nCorrect Output --> {ans}')
