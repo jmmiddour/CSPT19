@@ -100,15 +100,19 @@ def meanGroups(a):
 
 	for i in range(len(a)):
 		avg.append(mean(a[i]))
+		avg = sorted(avg)
+		print(f'Avg in append loop: {avg}')
 
 	for j in range(len(avg)):
-		if avg[j] not in set(avg):
-			groups.append(j)
-			print(groups)
+		if avg[j] != avg[j + 1]:
+			groups.append([j])
+			print(f'Groups in if: {groups}')
 
 		else:
-			groups[0].append(j)
+			groups[-j].append(j)
+			print(f'Groups in else: {groups}')
 
+	print(f'Groups before return: {groups}')
 	return groups
 
 
@@ -124,9 +128,9 @@ if __name__ == '__main__':
 	       [1],
 	       [2, 3]]
 	if ans == meanGroups(a):
-		print(f'PASSED!')
+		print(f'PASSED!\n')
 	else:
-		print(f'Failed: Correct Output: {ans}')
+		print(f'Failed: Correct Output: {ans}\n')
 
 	# Test 2
 	a = [[-5, 2, 3],
@@ -135,17 +139,17 @@ if __name__ == '__main__':
 	     [-100, 100]]
 	ans = [[0, 1, 2, 3]]
 	if ans == meanGroups(a):
-		print(f'PASSED!')
+		print(f'PASSED!\n')
 	else:
-		print(f'Failed: Correct Output: {ans}')
+		print(f'Failed: Correct Output: {ans}\n')
 
 	# Test 3
 	a = [[100]]
 	ans = [[0]]
 	if ans == meanGroups(a):
-		print(f'PASSED!')
+		print(f'PASSED!\n')
 	else:
-		print(f'Failed: Correct Output: {ans}')
+		print(f'Failed: Correct Output: {ans}\n')
 
 	# Test 4
 	a = [[2, 2, -3],
@@ -157,9 +161,9 @@ if __name__ == '__main__':
 	       [2],
 	       [3]]
 	if ans == meanGroups(a):
-		print(f'PASSED!')
+		print(f'PASSED!\n')
 	else:
-		print(f'Failed: Correct Output: {ans}')
+		print(f'Failed: Correct Output: {ans}\n')
 
 	# Test 5
 	a = [[-2, 4, 7, -6, 2, -5, 3],
@@ -170,9 +174,9 @@ if __name__ == '__main__':
 	       [1],
 	       [3]]
 	if ans == meanGroups(a):
-		print(f'PASSED!')
+		print(f'PASSED!\n')
 	else:
-		print(f'Failed: Correct Output: {ans}')
+		print(f'Failed: Correct Output: {ans}\n')
 
 	# Test 6
 	a = [[-1,0,0,0,0],
@@ -191,9 +195,9 @@ if __name__ == '__main__':
 	       [4],
 	       [8]]
 	if ans == meanGroups(a):
-		print(f'PASSED!')
+		print(f'PASSED!\n')
 	else:
-		print(f'Failed: Correct Output: {ans}')
+		print(f'Failed: Correct Output: {ans}\n')
 
 	# Test 7
 	a = [[0],
@@ -216,6 +220,6 @@ if __name__ == '__main__':
 	       [7],
 	       [12]]
 	if ans == meanGroups(a):
-		print(f'PASSED!')
+		print(f'PASSED!\n')
 	else:
-		print(f'Failed: Correct Output: {ans}')
+		print(f'Failed: Correct Output: {ans}\n')
