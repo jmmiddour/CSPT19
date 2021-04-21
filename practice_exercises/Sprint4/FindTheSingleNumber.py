@@ -37,7 +37,7 @@ def csFindTheSingleNumber(nums):
 	for i in nums:
 		# Each time a value is seen, add a 1 to the value at that key
 		if i in vals.keys():
-			vals[i] = vals[i] + 1
+			vals[i] += 1
 
 		# If value has not been seen yet, create key with value of 1
 		else:
