@@ -21,17 +21,42 @@ Explanation: The input list contains redundant nodes (3), (6), and (2),
 
 
 # Singly-linked lists are already defined with this interface:
-class ListNode(object):
-	def __init__(self, x):
-		self.value = x
+class Node:
+	def __init__(self, value):
+		self.value = value
 		self.next = None
 
 
 # Need to create the linked list
 class LinkedList:
-	def __init__(self):
+	def __init__(self, h=None):
 		self.head = None
 		self.tail = None
+
+	def insert_node(self, value):
+		new_node = Node(value)
+		if self.head is None:
+			self.head = new_node
+			self.tail = self.head
+
+		else:
+			self.tail.next = new_node
+			self.tail = new_node
+
+	def print_list(self):
+		curr = self.head
+
+		while curr:
+			print(curr.value)
+			curr = curr.next
+
+
+def new_list(node_list):
+	linked = LinkedList()
+	for i in range(len(node_list)):
+		linked.insert_node(node_list[i])
+
+	return linked.head
 
 
 def condense_linked_list(node):
@@ -62,7 +87,7 @@ def condense_linked_list(node):
 # Testing
 if __name__ == '__main__':
 	# Test 1
-	node = ListNode([3, 4, 3, 2, 6, 1, 2, 6])
+	node = new_list([3, 4, 3, 2, 6, 1, 2, 6])
 	ans = [3, 4, 2, 6, 1]
 	if condense_linked_list(node) == ans:
 		print('Test 1 PASSED!!!\n')
@@ -73,29 +98,29 @@ if __name__ == '__main__':
 		)
 
 	# Test 2
-	node = ListNode([1, 2, 1, 1, 2])
+	node = new_list([1, 2, 1, 1, 2])
 	ans = [1, 2]
 	if condense_linked_list(node) == ans:
-		print('Test 1 PASSED!!!\n')
+		print('Test 2 PASSED!!!\n')
 	else:
 		print(
-			f'Test 1 Failed!\n  Your Output: '
+			f'Test 2 Failed!\n  Your Output: '
 			f'{condense_linked_list(node)}\n  Correct Output: {ans}'
 		)
 
 	# Test 3
-	node = ListNode([1, 2, 2, 1, 3])
+	node = new_list([1, 2, 2, 1, 3])
 	ans = [1, 2, 3]
 	if condense_linked_list(node) == ans:
-		print('Test 1 PASSED!!!\n')
+		print('Test 3 PASSED!!!\n')
 	else:
 		print(
-			f'Test 1 Failed!\n  Your Output: '
+			f'Test 3 Failed!\n  Your Output: '
 			f'{condense_linked_list(node)}\n  Correct Output: {ans}'
 		)
 
 	# Test 4
-	node = ListNode(
+	node = new_list(
 		[
 			68, 33, 10, 43, 23, 97, 14, 51, 1, 16, 91, 6, 55, 32, 81, 90, 14,
 			90, 55, 62, 42, 21, 79, 38, 70, 11, 44, 97, 16, 34, 0, 50, 49, 68,
@@ -121,15 +146,15 @@ if __name__ == '__main__':
 		45, 18
 	]
 	if condense_linked_list(node) == ans:
-		print('Test 1 PASSED!!!\n')
+		print('Test 4 PASSED!!!\n')
 	else:
 		print(
-			f'Test 1 Failed!\n  Your Output: '
+			f'Test 4 Failed!\n  Your Output: '
 			f'{condense_linked_list(node)}\n  Correct Output: {ans}'
 		)
 
 	# Test 5
-	node = ListNode(
+	node = new_list(
 		[
 			58, 100, 88, 29, 26, 82, 41, 13, 30, 95, 67, 63, 90, 86, 25, 18,
 			27, 59, 28, 24, 62, 38, 74, 93, 55, 91, 63, 27, 58, 7, 49, 19,
@@ -172,15 +197,15 @@ if __name__ == '__main__':
 		43, 39, 51, 60, 66, 83, 5, 84, 16, 94, 92, 54, 96, 6
 	]
 	if condense_linked_list(node) == ans:
-		print('Test 1 PASSED!!!\n')
+		print('Test 5 PASSED!!!\n')
 	else:
 		print(
-			f'Test 1 Failed!\n  Your Output: '
+			f'Test 5 Failed!\n  Your Output: '
 			f'{condense_linked_list(node)}\n  Correct Output: {ans}'
 		)
 
 	# Test 6
-	node = ListNode(
+	node = new_list(
 		[
 			63, 53, 32, 44, 87, 92, 18, 1, 11, 22, 55, 7, 93, 43, 65, 86, 9,
 			78, 81, 47, 18, 4, 1, 32, 38, 70, 88, 58, 15, 27, 96, 66, 91, 72,
@@ -200,15 +225,15 @@ if __name__ == '__main__':
 		79, 33, 16, 76, 0, 42, 64, 74
 	]
 	if condense_linked_list(node) == ans:
-		print('Test 1 PASSED!!!\n')
+		print('Test 6 PASSED!!!\n')
 	else:
 		print(
-			f'Test 1 Failed!\n  Your Output: '
+			f'Test 6 Failed!\n  Your Output: '
 			f'{condense_linked_list(node)}\n  Correct Output: {ans}'
 		)
 
 	# Test 7
-	node = ListNode(
+	node = new_list(
 		[
 			196, 43, 167, 413, 143, 457, 483, 14, 266, 462, 90, 107, 154,
 			442, 30, 164, 161, 228, 155, 286, 208, 459, 16, 354, 312, 163, 310,
@@ -631,9 +656,9 @@ if __name__ == '__main__':
 		81, 406
 	]
 	if condense_linked_list(node) == ans:
-		print('Test 1 PASSED!!!\n')
+		print('Test 7 PASSED!!!')
 	else:
 		print(
-			f'Test 1 Failed!\n  Your Output: '
+			f'Test 7 Failed!\n  Your Output: '
 			f'{condense_linked_list(node)}\n  Correct Output: {ans}'
 		)
