@@ -83,55 +83,53 @@ def uncover_spy(n, trust):
 	########################################################################
 	# ####### My Solution = Only Passing 6/7 Test (Test 6 Failing) ####### #
 	########################################################################
-	# # Create a dictionary for the people, key is the truster, value is the
-	# trusted
-	# trusted = {}
-	# # Create a results list with people that are not trusted
-	# res = deque()
+	# Create a dictionary for the people, key is the trustier, value is the
+	#   trusted
+	trusted = {}
+	# Create a results list with people that are not trusted
+	res = []
 
-	# # Iterate over the list of trust to populate the dictionary
-	# for i in range(len(trust)):
-	#     # If the person at trust[0] is in the dictionary
-	#     if trust[i][0] in trusted:
-	#         # Append trust[1] to the value list
-	#         trusted[trust[i][0]].append(trust[i][1])
+	# Iterate over the list of trust to populate the dictionary
+	for i in range(len(trust)):
+		# If the person at trust[0] is in the dictionary
+		if trust[i][0] in trusted:
+			# Append trust[1] to the value list
+			trusted[trust[i][0]].append(trust[i][1])
 
-	#     # Otherwise...
-	#     else:
-	#         # Add trust[0] as key and trust[1] as value
-	#         trusted[trust[i][0]] = [trust[i][1]]
+		# Otherwise...
+		else:
+			# Add trust[0] as key and trust[1] as value
+			trusted[trust[i][0]] = [trust[i][1]]
 
-	# # Iterate through the dictionary
-	# for key, _ in trusted.items():
-	#     # If the value is not in the dictionary keys...
-	#     if trusted[key] not in iter(trusted.keys()):
-	#         # If the current val is not already in results...
-	#         if trusted[key] not in res:
-	#             # Add the current value to the results
-	#             res.append(trusted[key].pop())
+	# print(trusted)
 
-	#         else:  # Otherwise...
-	#             # Remove the current value from the results
-	#             res = res.remove(trusted[key()])
+	# Iterate through the dictionary
+	for key, _ in trusted.items():
+		# If the value is not in the dictionary keys...
+		if trusted[key] not in iter(trusted.keys()):
+			# If the current val is not already in results...
+			if trusted[key] not in res:
+				# Add the current value to the results
+				res.append(trusted[key].pop())
 
-	#     else:  # Otherwise
-	#         # Remove the current value from the results
-	#         res = res.remove(trusted[key])
+	for i in res:
+		if i in trusted.keys():
+			res = [val for val in res if val != i]
 
-	#     # print(f'Results in loop: {res}')
+	print(f'Results after loop: {res}')
 
-	# # Turn the results list into a set to get only unique values
-	# res = set(res)
+	# Turn the results list into a set to get only unique values
+	res = set(res)
 
-	# # print(f'Results: {res}')
+	print(f'Results: {res}')
 
-	# # If the results is not empty and there is only 1 value
-	# if res != {} and len(res) < 2:
-	#     # Return the value
-	#     return res.pop()
+	# If the results is not empty and there is only 1 value
+	if 0 < len(res) < 2 and res in trusted.values():
+		# Return the value
+		return res.pop()
 
-	# # Otherwise, return -1, spy not found
-	# return -1
+	# Otherwise, return -1, spy not found
+	return -1
 
 	##########################################################################
 	# ################### Solution found on LeetCode ####################### #
@@ -139,25 +137,87 @@ def uncover_spy(n, trust):
 	https://leetcode.com/problems/find-the-town-judge/discuss/244859/Python-O(n)-with-Explanation
 	"""
 	##########################################################################
-	# Create a list of the trusted
-	trusted = [0] * (n + 1)
+	# # Create a list of the trusted
+	# trusted = [0] * (n + 1)
+	#
+	# # Iterate over the people in the trust list
+	# for person_a, person_b in trust:
+	# 	# Decrement person a's score by 1 for trusting another person
+	# 	trusted[person_a] -= 1
+	# 	# Increment person b's score by 1, they are the one being trusted
+	# 	trusted[person_b] += 1
+	#
+	# # Iterate though the number of people in the city-state
+	# for i in range(1, n + 1):
+	# 	# If the person's score is the number of people - 1...
+	# 	if trusted[i] == n - 1:
+	# 		# Return that person, found our spy
+	# 		return i
+	#
+	# # Otherwise, return -1
+	# return -1
 
-	# Iterate over the people in the trust list
-	for person_a, person_b in trust:
-		# Decrement person a's score by 1 for trusting another person
-		trusted[person_a] -= 1
-		# Increment person b's score by 1, they are the one being trusted
-		trusted[person_b] += 1
+	###########################################################################
+	# ################ Steve's Solution - Not Passing Test 5 ################ #
+	###########################################################################
+	# suspects = list(range(1, n + 1))
+	# trusted = []
+	#
+	# for i in range(len(trust)):
+	# 	if trust[i][1] not in trusted:
+	# 		trusted.append(trust[i][1])
+	#
+	# 	if trust[i][0] in suspects:
+	# 		suspects.remove(trust[i][0])
+	#
+	# if len(suspects) == 1:
+	# 	if suspects[0] in trusted:
+	# 		return suspects[0]
+	#
+	# return -1
 
-	# Iterate though the number of people in the city-state
-	for i in range(1, n + 1):
-		# If the person's score is the number of people - 1...
-		if trusted[i] == n - 1:
-			# Return that person, found our spy
-			return i
-
-	# Otherwise, return -1
-	return -1
+	###########################################################################
+	# ################## Steve's Solution - Reworked by Me ################## #
+	###########################################################################
+	# # Create a suspect list
+	# suspects = list(range(1, n + 1))
+	# # Create a list to hold the trusted people
+	# trusted = []
+	# # Create a dictionary to hold the trusted people and their count of trusts
+	# trusted_by = {}
+	#
+	# # Populate the trusted and suspects lists
+	# for i in range(len(trust)):
+	# 	# If the person trusted is not in trusted already...
+	# 	if trust[i][1] not in trusted:
+	# 		# Add the trusted person to the trusted list
+	# 		trusted.append(trust[i][1])
+	#
+	# 	# If the person that is doing the trusting is in suspects...
+	# 	if trust[i][0] in suspects:
+	# 		# Need to remove them from the suspect list, they are not the spy
+	# 		suspects.remove(trust[i][0])
+	#
+	# # Populate the trusted_by dictionary
+	# for i in range(len(trust)):
+	# 	# If the person being trusted is not already in the trusted_by dict...
+	# 	if trust[i][1] not in trusted_by:
+	# 		# Add that person as a key and instantiate their count at 1
+	# 		trusted_by[trust[i][1]] = 1
+	#
+	# 	else:  # Otherwise, if already in the trusted_by dictionary...
+	# 		# Increment their count by 1
+	# 		trusted_by[trust[i][1]] += 1
+	#
+	# # If there is only 1 value in the suspects list...
+	# if len(suspects) == 1:
+	# 	# If the suspect is in trusted and is trusted by all...
+	# 	if suspects[0] in trusted and trusted_by[suspects[0]] == n - 1:
+	# 		# Return the suspect value, found the spy
+	# 		return suspects[0]
+	#
+	# # Spy has not been determined, return -1
+	# return -1
 
 
 # Testing
@@ -254,9 +314,9 @@ if __name__ == '__main__':
 	]
 	ans = 99
 	if uncover_spy(n, trust) == ans:
-		print('Test 1 PASSED!!!')
+		print('Test 7 PASSED!!!')
 	else:
 		print(
-			f'Test 1 Failed!\n  Your Output: {uncover_spy(n, trust)}\n  '
+			f'Test 7 Failed!\n  Your Output: {uncover_spy(n, trust)}\n  '
 			f'Correct Output: {ans}'
 		)
